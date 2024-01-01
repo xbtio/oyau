@@ -56,3 +56,12 @@ class TariffRepo:
         except Exception as e:
             print('Exception in delete_tariff: ', e)
             return False
+        
+    async def get_tariff_by_business_id(self, business_id: int) -> Tariff:
+        try:
+            stmt = select(Tariff).where(Tariff.business_id == business_id)
+            result = await self.session.execute(stmt)
+            return result.scalars().all()
+        except Exception as e:
+            print('Exception in get_tariff_by_business_id: ', e)
+            return False

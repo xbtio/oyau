@@ -43,3 +43,11 @@ async def delete_tariff(tariff_id: int, current_user: User = Depends(current_use
     if tariff:
         return JSONResponse(status_code=200, content={'message': 'Tariff deleted successfully'})
     return JSONResponse(status_code=400, content={'message': 'Tariff deletion failed'})
+
+@router.get('/get_tariff_by_business_id', response_model=List[TariffRead])
+async def get_tariff_by_business_id(business_id: int, current_user: User = Depends(current_user), session: AsyncSession = Depends(get_async_session)):
+    tariff_service = TariffService(session)
+    tariff = await tariff_service.get_tariff_by_business_id(business_id)
+    if tariff:
+        return tariff
+    return JSONResponse(status_code=400, content={'message': 'Tariff retrieval failed'})

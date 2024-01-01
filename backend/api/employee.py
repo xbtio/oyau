@@ -43,3 +43,11 @@ async def delete_employee(employee_id: int, current_user: User = Depends(current
     if employee:
         return JSONResponse(status_code=200, content={'message': 'Employee deleted successfully'})
     return JSONResponse(status_code=400, content={'message': 'Employee deletion failed'})
+
+@router.get('/get_employee_by_business_id', response_model=List[EmployeeRead])
+async def get_employee_by_business_id(business_id: int, current_user: User = Depends(current_user), session: AsyncSession = Depends(get_async_session)):
+    employee_service = EmployeeService(session)
+    employee = await employee_service.get_employee_by_business_id(business_id)
+    if employee:
+        return employee
+    return JSONResponse(status_code=400, content={'message': 'Employee retrieval failed'})

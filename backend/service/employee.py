@@ -25,6 +25,9 @@ class EmployeeService:
         employee = await self.business_repo.delete_employee(employee_id)
         return employee
     
+    async def get_employee_by_business_id(self, business_id: int) -> bool:
+        employee = await self.business_repo.get_employee_by_business_id(business_id)
+        return employee
 
     
    

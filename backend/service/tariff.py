@@ -24,4 +24,8 @@ class TariffService:
     async def delete_tariff(self, tariff_id: int) -> bool:
         tariff = await self.business_repo.delete_tariff(tariff_id)
         return tariff
+    
+    async def get_tariff_by_business_id(self, business_id: int) -> bool:
+        tariff = await self.business_repo.get_tariff_by_business_id(business_id)
+        return tariff
 

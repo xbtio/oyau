@@ -56,3 +56,13 @@ class EmployeeRepo:
         except Exception as e:
             print('Exception in delete_employee: ', e)
             return False
+        
+    
+    async def get_employee_by_business_id(self, business_id: int) -> List[Employee]:
+        try:
+            stmt = select(Employee).where(Employee.business_id == business_id)
+            result = await self.session.execute(stmt)
+            return result.scalars().all()
+        except Exception as e:
+            print('Exception in get_employee_by_business_id: ', e)
+            return False

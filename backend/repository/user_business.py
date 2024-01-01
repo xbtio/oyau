@@ -36,15 +36,7 @@ class UserBusinessRepo:
         except Exception as e:
             print('Exception in get_user_business_by_user_id: ', e)
             return False
-    
-    async def get_user_businesses(self) -> List[UserBusiness]:
-        try:
-            stmt = select(UserBusiness)
-            result = await self.session.execute(stmt)
-            return result.scalars().all()
-        except Exception as e:
-            print('Exception in get_user_businesses: ', e)
-            return False
+
         
     async def update_user_business(self, user_business: Dict[str, Any]) -> Dict:
         try:

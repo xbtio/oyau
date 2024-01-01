@@ -14,7 +14,7 @@ from config import REDIS_HOST, REDIS_PORT
 
 
 
-from api import business, employee, tariff
+from api import business, employee, tariff, service, session
 
 
 
@@ -84,6 +84,19 @@ app.include_router(
     prefix="/tariff",
     tags=["tariff"],
 )
+
+app.include_router(
+    service.router,
+    prefix="/service",
+    tags=["service"],
+)
+
+app.include_router(
+    session.router,
+    prefix="/session",
+    tags=["session"],
+)
+
 
 @app.on_event("startup")
 async def startup_event():
