@@ -16,3 +16,6 @@ REDIS_PORT = os.environ.get("REDIS_PORT")
 
 SMTP_SECRET = os.environ.get("SMTP_SECRET")
 SMTP_USER = os.environ.get("SMTP_USER")
+
+VERIFY_TOKEN = os.environ.get("VERIFY_TOKEN")
+WHATSAPP_TOKEN = os.environ.get("WHATSAPP_TOKEN")

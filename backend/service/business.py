@@ -1,6 +1,4 @@
 from sqlalchemy.ext.asyncio import AsyncSession
-from fastapi import HTTPException, status
-from model.data.business import Business
 from repository.business import BusinessRepo
 from repository.user_business import UserBusinessRepo
 from typing import List, Dict, Any, Union

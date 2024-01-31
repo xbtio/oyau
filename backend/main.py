@@ -14,7 +14,7 @@ from config import REDIS_HOST, REDIS_PORT
 
 
 
-from api import business, employee, tariff, service, session
+from api import business, employee, tariff, service, session, whatsapp_webhook
 
 
 
@@ -95,6 +95,12 @@ app.include_router(
     session.router,
     prefix="/session",
     tags=["session"],
+)
+
+app.include_router(
+    whatsapp_webhook.router,
+    prefix="/whatsapp_webhook",
+    tags=["whatsapp_webhook"],
 )
 
 

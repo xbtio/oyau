@@ -6,7 +6,7 @@ from config import SMTP_SECRET, SMTP_USER, REDIS_HOST, REDIS_PORT
 from celery import Celery
 
 SMTP_HOST = "smtp.gmail.com"
-SMTP_PORT = 465
+SMTP_PORT = 587 
 
 celery = Celery('tasks', broker=f'redis://{REDIS_HOST}:{REDIS_PORT}')
 
@@ -19,7 +19,7 @@ def verification_token(username: str, to_email: str, token: str):
 
     email.set_content(
         '<div>'
-        f'<h1 style="color: red;">Hello, {username}, here is your verification token - {token}</h1>'
+        f'<h1 style="color: red;">Hello, {username}, you are pieace of shit and here is your token - {token}</h1>'
         '</div>',
         subtype='html'
     )
