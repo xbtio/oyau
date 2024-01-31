@@ -10,3 +10,6 @@ RUN pip install -r /app/requirements.txt
 COPY . .
 
 RUN chmod a+x docker/*.sh
+
+EXPOSE 8080/tcp
+EXPOSE 8080/udp
